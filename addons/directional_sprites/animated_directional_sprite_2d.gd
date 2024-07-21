@@ -1,8 +1,4 @@
-## n-direction sprite that supports animations through SpriteFrames,
-## like the AnimatedSprite2D node.
-
-## Make sure all of your animations and frames have 
-## the same orientation and number of directions.
+## n-direction sprite that supports animations through SpriteFrames
 @tool
 extends AnimatedSprite2D
 class_name AnimatedDirectionalSprite2D
