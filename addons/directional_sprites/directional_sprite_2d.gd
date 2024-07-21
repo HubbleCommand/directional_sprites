@@ -41,32 +41,3 @@ func _ready() -> void:
 	DirectionalHelpers.set_shader_param(material, "frame", texture)
 	DirectionalHelpers.set_shader_param(material, "orientation", orientation)
 	DirectionalHelpers.set_shader_param(material, "directions", directions)
-
-
-#deprecated
-var _frames: Texture2DArray
-func _build_frames() -> void:
-	var image : Image = texture.get_image().duplicate()
-	
-	# Cannot do following operations if image is compressed
-	if image.is_compressed():
-		image.decompress()
-	
-	#Um, the next line should at least show a warning...
-	#var frames_array = Array[Image]
-	var frames_array : Array[Image] = []
-	
-	var axis_size : int = image.get_height() if orientation else image.get_width()
-	var axis_size_single: int = axis_size / directions
-	for n in range(directions):
-		var region: Rect2i
-		
-		if orientation:	#Vertical
-			region = Rect2i(0, axis_size_single * n, image.get_width(), axis_size_single)
-		else:	# Horizontal
-			region = Rect2i(axis_size_single * n, 0, axis_size_single, image.get_height())
-		frames_array.append(image.get_region(region))
-	
-	_frames = Texture2DArray.new()
-	_frames.create_from_images(frames_array)
-	DirectionalHelpers.set_shader_param(material, "frames", _frames)
