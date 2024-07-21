@@ -17,10 +17,10 @@ uniform bool double_sided = true; //TODO //Only works if no billboard mode
 uniform bool no_depth_test = false; //TODO
 uniform bool fixed_size = false; //TODO
 //Alpha cut cannot find
-uniform float alpha_scissor_threshold: hint_range(0.0, 1.0) = 0.5; //TODO
-uniform float alpha_hash_scale: hint_range(0.0, 2.0) = 1.0; //TODO
+uniform float alpha_scissor_threshold: hint_range(0.0, 1.0) = 0.5;
+uniform float alpha_hash_scale: hint_range(0.0, 2.0) = 1.0;
 //Antialiasing mode not found
-uniform float alpha_antialiasing_edge: hint_range(0.0, 1.0) = 0.0; //TODO
+uniform float alpha_antialiasing_edge: hint_range(0.0, 1.0) = 0.0;
 //Texture filter not supported as uniform
 //Render priority cannot find
 
@@ -47,6 +47,10 @@ void vertex() {
 
 
 void fragment() {
+	ALPHA_SCISSOR_THRESHOLD = alpha_scissor_threshold;
+	ALPHA_HASH_SCALE = alpha_hash_scale;
+	ALPHA_ANTIALIASING_EDGE = alpha_antialiasing_edge;
+
 	if (billboard == 0 && !FRONT_FACING && double_sided) {
 		NORMAL.z = -NORMAL.z; //Only need to flip Z normal if no billboarding (otherwise only shows half...ish)
     }
