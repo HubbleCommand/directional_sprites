@@ -37,13 +37,6 @@ func _ready() -> void:
 	material_override = material
 	
 	# Connect signals to update Shader parameters
-	"""
-	animation_changed.connect(_f_animation_changed)
-	animation_finished.connect(_f_animation_finished)
-	animation_looped.connect(_f_animation_looped)
-	frame_changed.connect(_f_frame_changed)
-	sprite_frames_changed.connect(_f_sprite_frames_changed)
-	"""
 	animation_changed.connect(_rebuild_frame)
 	animation_finished.connect(_rebuild_frame)
 	animation_looped.connect(_rebuild_frame)
@@ -65,32 +58,9 @@ func _ready() -> void:
 	DirectionalHelpers.set_shader_param(material, "alpha_hash_scale", alpha_hash_scale)
 	DirectionalHelpers.set_shader_param(material, "alpha_antialiasing_edge", alpha_antialiasing_edge)
 
-"""
-func _f_animation_changed():
-	print("animation changed")
-	_rebuild_frame()
-
-func _f_animation_finished():
-	print("animation finished")
-	_rebuild_frame()
-
-func _f_animation_looped():
-	print("animation looped")
-	_rebuild_frame()
-
-func _f_frame_changed():
-	print("frame changed")
-	_rebuild_frame()
-
-func _f_sprite_frames_changed():
-	print("sprite frames changed")
-	_rebuild_frame()
-"""
-
 
 ## Cut the target frame out of the image
 func _rebuild_frame():
-	
 	if sprite_frames == null:
 		return
 	if material == null:
@@ -102,10 +72,3 @@ func _rebuild_frame():
 		return
 		
 	material.set_shader_parameter("views", texture)
-	
-	#var image = texture.get_image()
-	#print("Got image from texture")
-	#var size = image.get_size()
-	#x, y, width, height
-	#var frame = image.get_region(Rect2i())
-	#material.set_shader_parameter("views", frame)
