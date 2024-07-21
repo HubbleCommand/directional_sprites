@@ -1,0 +1,72 @@
+[gd_resource type="SpriteFrames" load_steps=11 format=3 uid="uid://dd7uwcb0xjk2a"]
+
+[ext_resource type="Texture2D" uid="uid://bcjtnbgaciuve" path="res://addons/directional_sprites/demo/assets/doom_firing.png" id="1_jms8e"]
+[ext_resource type="Texture2D" uid="uid://b2gujebt5rf63" path="res://addons/directional_sprites/demo/assets/doom_walking.png" id="1_mi0nc"]
+[ext_resource type="Texture2D" uid="uid://twitvti1bwdk" path="res://addons/directional_sprites/demo/assets/doom_pain.png" id="2_osemh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2n3aa"]
+atlas = ExtResource("1_jms8e")
+region = Rect2(0, 0, 58, 475)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uglxv"]
+atlas = ExtResource("1_jms8e")
+region = Rect2(58, 0, 58, 475)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ux4gs"]
+atlas = ExtResource("2_osemh")
+region = Rect2(0, 0, 59, 480)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sojxl"]
+atlas = ExtResource("1_mi0nc")
+region = Rect2(0, 0, 58, 475)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qda02"]
+atlas = ExtResource("1_mi0nc")
+region = Rect2(58, 0, 58, 475)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m3q4g"]
+atlas = ExtResource("1_mi0nc")
+region = Rect2(116, 0, 58, 475)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qcwh5"]
+atlas = ExtResource("1_mi0nc")
+region = Rect2(174, 0, 58, 475)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2n3aa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uglxv")
+}],
+"loop": true,
+"name": &"firing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ux4gs")
+}],
+"loop": true,
+"name": &"pain",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sojxl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qda02")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m3q4g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qcwh5")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 5.0
+}]
