@@ -1,0 +1,88 @@
+[gd_scene load_steps=15 format=3 uid="uid://dr31pnyyxlhf6"]
+
+[ext_resource type="Texture2D" uid="uid://5ipk7xs0lji1" path="res://addons/directional_sprites/demo/assets/sample.png" id="1_8ac2s"]
+[ext_resource type="Shader" path="res://addons/directional_sprites/DirectionalSprite2DShader.gdshader" id="1_c2qri"]
+[ext_resource type="Texture2D" uid="uid://cyko5fnt536uh" path="res://addons/directional_sprites/demo/assets/doom_aim_horizontal.png" id="1_t0j0a"]
+[ext_resource type="Script" path="res://addons/directional_sprites/directional_sprite_2d.gd" id="2_mbq3j"]
+[ext_resource type="Texture2D" uid="uid://twitvti1bwdk" path="res://addons/directional_sprites/demo/assets/doom_pain.png" id="5_5ifqk"]
+[ext_resource type="Script" path="res://addons/directional_sprites/demo/spin2d.gd" id="6_0qnt1"]
+[ext_resource type="SpriteFrames" uid="uid://dd7uwcb0xjk2a" path="res://addons/directional_sprites/demo/assets/doom.tres" id="6_1gsch"]
+[ext_resource type="Texture2D" uid="uid://bcjtnbgaciuve" path="res://addons/directional_sprites/demo/assets/doom_firing.png" id="6_42jhf"]
+[ext_resource type="Script" path="res://addons/directional_sprites/animated_directional_sprite_2d.gd" id="7_vhj28"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_qop17"]
+polygon = PackedVector2Array(-10, -8, 5, -8, 9, -2, 9, 7, -9, 7, -13, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iqkut"]
+shader = ExtResource("1_c2qri")
+shader_parameter/directions = 8.0
+shader_parameter/orientation = true
+shader_parameter/frame = ExtResource("1_8ac2s")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q1dhj"]
+shader = ExtResource("1_c2qri")
+shader_parameter/directions = 8.0
+shader_parameter/orientation = true
+shader_parameter/frame = ExtResource("5_5ifqk")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2n3aa"]
+atlas = ExtResource("6_42jhf")
+region = Rect2(0, 0, 58, 475)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_llrbc"]
+shader = ExtResource("1_c2qri")
+shader_parameter/directions = 8.0
+shader_parameter/orientation = true
+shader_parameter/frame = SubResource("AtlasTexture_2n3aa")
+
+[node name="Demo" type="Node2D"]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+position = Vector2(-41, 37)
+scale = Vector2(2, 2)
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+position = Vector2(-204, -86)
+scale = Vector2(2, 2)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-41, 37)
+scale = Vector2(2, 2)
+energy = 8.28
+blend_mode = 2
+shadow_enabled = true
+texture = ExtResource("1_t0j0a")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+position = Vector2(-100, 0)
+occluder = SubResource("OccluderPolygon2D_qop17")
+
+[node name="DirectionalSprite2D" type="Sprite2D" parent="LightOccluder2D"]
+material = SubResource("ShaderMaterial_iqkut")
+texture = ExtResource("1_8ac2s")
+region_rect = Rect2(10, 10, -10, 10)
+script = ExtResource("2_mbq3j")
+directions = 8
+
+[node name="DirectionalSprite2D Vertical DOOM" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_q1dhj")
+texture = ExtResource("5_5ifqk")
+script = ExtResource("2_mbq3j")
+directions = 8
+orientation = 1
+
+[node name="AnimatedDirectionalSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_llrbc")
+position = Vector2(100, 0)
+sprite_frames = ExtResource("6_1gsch")
+animation = &"firing"
+autoplay = "firing"
+frame_progress = 0.763547
+script = ExtResource("7_vhj28")
+directions = 8
+orientation = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+ignore_rotation = false
+zoom = Vector2(3, 3)
+script = ExtResource("6_0qnt1")
