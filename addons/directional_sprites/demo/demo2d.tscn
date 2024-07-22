@@ -13,13 +13,13 @@
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_qop17"]
 polygon = PackedVector2Array(-10, -8, 5, -8, 9, -2, 9, 7, -9, 7, -13, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_s1a8b"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2nxdg"]
 shader = ExtResource("1_c2qri")
 shader_parameter/directions = 8.0
 shader_parameter/orientation = true
 shader_parameter/frame = ExtResource("1_8ac2s")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cs4c2"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_te2vr"]
 shader = ExtResource("1_c2qri")
 shader_parameter/directions = 8.0
 shader_parameter/orientation = true
@@ -29,7 +29,7 @@ shader_parameter/frame = ExtResource("5_5ifqk")
 atlas = ExtResource("6_42jhf")
 region = Rect2(0, 0, 58, 475)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kfq50"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_35q72"]
 shader = ExtResource("1_c2qri")
 shader_parameter/directions = 8.0
 shader_parameter/orientation = true
@@ -58,21 +58,21 @@ position = Vector2(-100, 0)
 occluder = SubResource("OccluderPolygon2D_qop17")
 
 [node name="DirectionalSprite2D" type="Sprite2D" parent="LightOccluder2D"]
-material = SubResource("ShaderMaterial_s1a8b")
+material = SubResource("ShaderMaterial_2nxdg")
 texture = ExtResource("1_8ac2s")
 region_rect = Rect2(10, 10, -10, 10)
 script = ExtResource("2_mbq3j")
 directions = 8
 
 [node name="DirectionalSprite2D Vertical DOOM" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_cs4c2")
+material = SubResource("ShaderMaterial_te2vr")
 texture = ExtResource("5_5ifqk")
 script = ExtResource("2_mbq3j")
 directions = 8
 orientation = 1
 
 [node name="AnimatedDirectionalSprite2D" type="AnimatedSprite2D" parent="."]
-material = SubResource("ShaderMaterial_kfq50")
+material = SubResource("ShaderMaterial_35q72")
 position = Vector2(100, 0)
 sprite_frames = ExtResource("6_1gsch")
 animation = &"firing"
