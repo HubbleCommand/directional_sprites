@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://b2gujebt5rf63" path="res://addons/directional_sprites/demo/assets/doom_walking.png" id="7_r3sj5"]
 [ext_resource type="SpriteFrames" uid="uid://dd7uwcb0xjk2a" path="res://addons/directional_sprites/demo/assets/doom.tres" id="8_5fsc3"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_otvda"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pmlbd"]
 render_priority = 0
 shader = ExtResource("4_me8hs")
 shader_parameter/directions = 8.0
@@ -24,7 +24,7 @@ shader_parameter/alpha_hash_scale = 1.0
 shader_parameter/alpha_antialiasing_edge = 0.0
 shader_parameter/views = ExtResource("1_otmx8")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_v4ysq"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v1ls8"]
 render_priority = 0
 shader = ExtResource("4_me8hs")
 shader_parameter/directions = 8.0
@@ -43,7 +43,7 @@ shader_parameter/views = ExtResource("5_k4opj")
 atlas = ExtResource("7_r3sj5")
 region = Rect2(0, 0, 58, 475)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jsfam"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3u4yr"]
 render_priority = 0
 shader = ExtResource("4_me8hs")
 shader_parameter/directions = 8.0
@@ -71,7 +71,7 @@ script = ExtResource("1_4cp1g")
 
 [node name="DirectionalSprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 0)
-material_override = SubResource("ShaderMaterial_otvda")
+material_override = SubResource("ShaderMaterial_pmlbd")
 billboard = 1
 texture = ExtResource("1_otmx8")
 script = ExtResource("4_vtpsc")
@@ -79,7 +79,7 @@ directions = 8
 
 [node name="DirectionalSprite3D Vertical" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0)
-material_override = SubResource("ShaderMaterial_v4ysq")
+material_override = SubResource("ShaderMaterial_v1ls8")
 billboard = 2
 alpha_cut = 2
 texture = ExtResource("5_k4opj")
@@ -89,7 +89,7 @@ orientation = 1
 
 [node name="AnimatedDirectionalSprite3D Vertical" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.938995, 0)
-material_override = SubResource("ShaderMaterial_jsfam")
+material_override = SubResource("ShaderMaterial_3u4yr")
 billboard = 2
 sprite_frames = ExtResource("8_5fsc3")
 animation = &"walking"

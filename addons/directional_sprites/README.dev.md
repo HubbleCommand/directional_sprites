@@ -13,6 +13,11 @@ Some sample sprites:
 
 For 2D: https://thebookofshaders.com/08/
 
+Source of 2D light
+https://docs.godotengine.org/en/stable/tutorials/2d/2d_lights_and_shadows.html
+
+See the paragraph after [this](https://docs.godotengine.org/en/stable/tutorials/2d/2d_lights_and_shadows.html#id4) image.
+
 ## Icons
 Icons were originally made with [Graphite](https://editor.graphite.rs/), but moved to Inkscape. Read [Creating Icons](https://docs.godotengine.org/en/latest/contributing/development/editor/creating_icons.html) for info on how to add icons to custom node types.
 
