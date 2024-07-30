@@ -1,5 +1,7 @@
-extends Camera2D
+extends Node2D
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+@export var node: Node2D
+
 func _process(delta: float) -> void:
-	rotation += 0.5 * delta
+	var _node = node if node else self
+	_node.rotation += 0.5 * delta
