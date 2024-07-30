@@ -48,7 +48,7 @@ void fragment() {
 	}
 	//Fixes when rad is between last dir∠ to 360deg
 	//Still minor issues here, but works for now
-	if (!(rads >= direction_angle * (directions - 1.0))) {	
+	if (!(rads > direction_angle * (directions - 1.0))) {	
 		rads += direction_angle / 2.0;
 	} else {
 		rads = 0.0;
