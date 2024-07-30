@@ -68,4 +68,5 @@ void fragment() {
 	//vec4 tex_color = texture(TEXTURE, region_uv);
 	vec4 tex_color = texture(frame, region_uv);
 	COLOR = tex_color;
+	NORMAL = texture(NORMAL_TEXTURE, UV).rgb;
 }
