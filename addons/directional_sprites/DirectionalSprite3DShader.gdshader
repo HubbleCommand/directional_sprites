@@ -53,7 +53,7 @@ void fragment() {
 
 	if (billboard == 0 && !FRONT_FACING && double_sided) {
 		NORMAL.z = -NORMAL.z; //Only need to flip Z normal if no billboarding (otherwise only shows half...ish)
-    }
+	}
 	
 	float d = dot(NORMAL.zx, vec2(-1, 0));
 	float angle = -acos(NORMAL.z) + TAU/2.0;
