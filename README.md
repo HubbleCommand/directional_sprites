@@ -6,6 +6,13 @@ n-directional sprites in 2D and 3D, for Godot 4.x
 Make sure all of your animations and frames have the same orientation and number of directions.
 
 
+## Scripts
+Some helper python scripts for making sprite sheets.
+
+`build_sprite_sheet.py` generates a single image with sprite sheet frames.
+
+`convert_col.py` converts one color to another in a batch operation. Useful for making backgrounds transparent.
+
 ## 3D : (Animated) Directional Sprite 3D
 
 In all cases, make sure you have enabled Shadows on your light nodes.
