@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4svictlj2nd8"
-path="res://.godot/imported/doom_aim_vertical.png-c08d47adf801b1a69c5f30818567edaf.ctex"
+uid="uid://do07ymfwxfj33"
+path="res://.godot/imported/doom_aim.png-6f76bde0f1ef7da6c9d63591c19105e3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/directional_sprites/demo/assets/doom_aim_vertical.png"
-dest_files=["res://.godot/imported/doom_aim_vertical.png-c08d47adf801b1a69c5f30818567edaf.ctex"]
+source_file="res://addons/directional_sprites/demo/assets/doom_aim.png"
+dest_files=["res://.godot/imported/doom_aim.png-6f76bde0f1ef7da6c9d63591c19105e3.ctex"]
 
 [params]
 
