@@ -3,6 +3,10 @@
 ## Origin
 After some research, I stumbled upon [this](https://github.com/godotengine/godot-proposals/discussions/5082) proposal, which is continued by Calinou [here](https://github.com/Calinou/godot-demo-projects/blob/add-first-person-shooter/3d/first_person_shooter/enemy/enemy.gdshader).
 
+However, the shader actually doesn't work correctly when rotating the camera up and done, and results in frame changes.
+
+After much fenagling, I randomly stumbled upon [this reddit post](https://www.reddit.com/r/godot/comments/13fgdek/shader_only_8_directional_billboarding/)
+which had a much better way to calculate rotations. While it still needed some work to finish, it was crucial in fixing the incorrent frame switching issue.
 
 Uses shaders to achieve directional billboard effect.
 
