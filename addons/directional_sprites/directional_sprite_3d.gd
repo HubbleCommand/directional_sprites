@@ -39,9 +39,15 @@ func _set(property: StringName, value: Variant) -> bool:
 @onready var shader = preload("DirectionalSprite3DShader.gdshader")
 @onready var material = ShaderMaterial.new()
 
+func _texture_changed():
+	DirectionalHelpers.set_shader_param(material, "views", texture)
+
 func _ready() -> void:
 	material.shader = shader
 	material_override = material
+	
+	#frame_changed signal handled by node & region info
+	texture_changed.connect(_texture_changed)
 
 	#Set shader params on ready for immediate effect when node starts
 	DirectionalHelpers.set_shader_param(material, "views", texture)

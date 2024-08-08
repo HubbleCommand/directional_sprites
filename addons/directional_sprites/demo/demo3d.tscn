@@ -1,15 +1,26 @@
-[gd_scene load_steps=13 format=3 uid="uid://kje4yf8mseks"]
+[gd_scene load_steps=17 format=3 uid="uid://kje4yf8mseks"]
 
 [ext_resource type="Script" path="res://addons/directional_sprites/demo/spin3d.gd" id="1_4cp1g"]
+[ext_resource type="Shader" path="res://addons/directional_sprites/demo/demo3d.gdshader" id="1_mkxvv"]
 [ext_resource type="Texture2D" uid="uid://5ipk7xs0lji1" path="res://addons/directional_sprites/demo/assets/sample.png" id="1_otmx8"]
 [ext_resource type="Shader" path="res://addons/directional_sprites/DirectionalSprite3DShader.gdshader" id="4_me8hs"]
 [ext_resource type="Script" path="res://addons/directional_sprites/directional_sprite_3d.gd" id="4_vtpsc"]
 [ext_resource type="Script" path="res://addons/directional_sprites/animated_directional_sprite_3d.gd" id="5_7wqsd"]
 [ext_resource type="Texture2D" uid="uid://c16ya0dd8mfic" path="res://addons/directional_sprites/demo/assets/sample - vertical.png" id="5_k4opj"]
 [ext_resource type="Texture2D" uid="uid://b2gujebt5rf63" path="res://addons/directional_sprites/demo/assets/doom_walking.png" id="7_r3sj5"]
+[ext_resource type="Texture2D" uid="uid://x5v3d8vlykri" path="res://addons/directional_sprites/demo/assets/numbers6dh.png" id="7_rjyr6"]
 [ext_resource type="SpriteFrames" uid="uid://dd7uwcb0xjk2a" path="res://addons/directional_sprites/demo/assets/doom.tres" id="8_5fsc3"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pmlbd"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hx5jb"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_mkxvv")
+shader_parameter/n_rows = 8
+shader_parameter/n_columns = 4
+shader_parameter/play = false
+shader_parameter/sprite_sheet = ExtResource("7_r3sj5")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rvupy"]
 render_priority = 0
 shader = ExtResource("4_me8hs")
 shader_parameter/directions = 8.0
@@ -24,7 +35,22 @@ shader_parameter/alpha_hash_scale = 1.0
 shader_parameter/alpha_antialiasing_edge = 0.0
 shader_parameter/views = ExtResource("1_otmx8")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_v1ls8"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1ig84"]
+render_priority = 0
+shader = ExtResource("4_me8hs")
+shader_parameter/directions = 8.0
+shader_parameter/orientation = false
+shader_parameter/billboard = 1
+shader_parameter/transparent = true
+shader_parameter/double_sided = true
+shader_parameter/no_depth_test = false
+shader_parameter/fixed_size = false
+shader_parameter/alpha_scissor_threshold = 0.5
+shader_parameter/alpha_hash_scale = 1.0
+shader_parameter/alpha_antialiasing_edge = 0.0
+shader_parameter/views = ExtResource("7_rjyr6")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ekdu8"]
 render_priority = 0
 shader = ExtResource("4_me8hs")
 shader_parameter/directions = 8.0
@@ -43,7 +69,7 @@ shader_parameter/views = ExtResource("5_k4opj")
 atlas = ExtResource("7_r3sj5")
 region = Rect2(0, 0, 58, 475)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3u4yr"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g7p14"]
 render_priority = 0
 shader = ExtResource("4_me8hs")
 shader_parameter/directions = 8.0
@@ -63,23 +89,42 @@ shader_parameter/views = SubResource("AtlasTexture_sojxl")
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -2)
 shadow_enabled = true
+shadow_blur = 0.0
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.09807, 0)
+material_override = SubResource("ShaderMaterial_hx5jb")
+billboard = 1
+texture = ExtResource("7_r3sj5")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 2.5)
 current = true
 script = ExtResource("1_4cp1g")
 
-[node name="DirectionalSprite3D" type="Sprite3D" parent="."]
+[node name="DirectionalSprite3D Horizontal" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 0)
-material_override = SubResource("ShaderMaterial_pmlbd")
+rotation_order = 1
+top_level = true
+material_override = SubResource("ShaderMaterial_rvupy")
 billboard = 1
 texture = ExtResource("1_otmx8")
 script = ExtResource("4_vtpsc")
 directions = 8
 
+[node name="DirectionalSprite3D 6N Horizontal" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, 0)
+rotation_order = 1
+top_level = true
+material_override = SubResource("ShaderMaterial_1ig84")
+billboard = 1
+texture = ExtResource("7_rjyr6")
+script = ExtResource("4_vtpsc")
+directions = 6
+
 [node name="DirectionalSprite3D Vertical" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0)
-material_override = SubResource("ShaderMaterial_v1ls8")
+material_override = SubResource("ShaderMaterial_ekdu8")
 billboard = 2
 alpha_cut = 2
 texture = ExtResource("5_k4opj")
@@ -88,8 +133,10 @@ directions = 8
 orientation = 1
 
 [node name="AnimatedDirectionalSprite3D Vertical" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.938995, 0)
-material_override = SubResource("ShaderMaterial_3u4yr")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00926, 0)
+rotation_order = 1
+top_level = true
+material_override = SubResource("ShaderMaterial_g7p14")
 billboard = 2
 sprite_frames = ExtResource("8_5fsc3")
 animation = &"walking"
