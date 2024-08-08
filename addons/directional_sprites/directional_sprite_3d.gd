@@ -27,13 +27,9 @@ https://docs.godotengine.org/en/stable/classes/class_object.html#class-object-pr
 https://docs.godotengine.org/en/stable/classes/class_object.html#class-object-private-method-get-property-list
 """
 func _set(property: StringName, value: Variant) -> bool:
-	#Animation-related props require rebuilding frames
-	# NOT REQUIRED, already handled...
-	#if property == "hframes" || property == "vframes" || property == "frame" || property == "frame_coords":
 	if property in DirectionalHelpers.props:
 		DirectionalHelpers.set_shader_param(material, property, value)
-	#If texture changes...
-		
+
 	return false
 
 @onready var shader = preload("DirectionalSprite3DShader.gdshader")
