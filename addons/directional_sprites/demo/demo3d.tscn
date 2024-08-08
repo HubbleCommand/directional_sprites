@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://x5v3d8vlykri" path="res://addons/directional_sprites/demo/assets/numbers6dh.png" id="7_rjyr6"]
 [ext_resource type="SpriteFrames" uid="uid://dd7uwcb0xjk2a" path="res://addons/directional_sprites/demo/assets/doom.tres" id="8_5fsc3"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rvupy"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v8q56"]
 render_priority = 0
 shader = ExtResource("4_me8hs")
 shader_parameter/directions = 8.0
@@ -25,7 +25,7 @@ shader_parameter/alpha_hash_scale = 1.0
 shader_parameter/alpha_antialiasing_edge = 0.0
 shader_parameter/views = ExtResource("1_otmx8")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1ig84"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m5nke"]
 render_priority = 0
 shader = ExtResource("4_me8hs")
 shader_parameter/directions = 8.0
@@ -40,7 +40,7 @@ shader_parameter/alpha_hash_scale = 1.0
 shader_parameter/alpha_antialiasing_edge = 0.0
 shader_parameter/views = ExtResource("7_rjyr6")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ekdu8"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1x5n3"]
 render_priority = 0
 shader = ExtResource("4_me8hs")
 shader_parameter/directions = 8.0
@@ -59,7 +59,7 @@ shader_parameter/views = ExtResource("5_k4opj")
 atlas = ExtResource("7_r3sj5")
 region = Rect2(0, 0, 58, 475)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_g7p14"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y6jbl"]
 render_priority = 0
 shader = ExtResource("4_me8hs")
 shader_parameter/directions = 8.0
@@ -90,7 +90,7 @@ script = ExtResource("1_4cp1g")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 0)
 rotation_order = 1
 top_level = true
-material_override = SubResource("ShaderMaterial_rvupy")
+material_override = SubResource("ShaderMaterial_v8q56")
 billboard = 1
 texture = ExtResource("1_otmx8")
 script = ExtResource("4_vtpsc")
@@ -100,7 +100,7 @@ directions = 8
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, 0)
 rotation_order = 1
 top_level = true
-material_override = SubResource("ShaderMaterial_1ig84")
+material_override = SubResource("ShaderMaterial_m5nke")
 billboard = 1
 texture = ExtResource("7_rjyr6")
 script = ExtResource("4_vtpsc")
@@ -108,7 +108,7 @@ directions = 6
 
 [node name="DirectionalSprite3D Vertical" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0)
-material_override = SubResource("ShaderMaterial_ekdu8")
+material_override = SubResource("ShaderMaterial_1x5n3")
 billboard = 2
 alpha_cut = 2
 texture = ExtResource("5_k4opj")
@@ -120,12 +120,11 @@ orientation = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00926, 0)
 rotation_order = 1
 top_level = true
-material_override = SubResource("ShaderMaterial_g7p14")
+material_override = SubResource("ShaderMaterial_y6jbl")
 billboard = 2
 sprite_frames = ExtResource("8_5fsc3")
 animation = &"walking"
 autoplay = "walking"
-frame_progress = 0.287818
 script = ExtResource("5_7wqsd")
 directions = 8
 orientation = 1
