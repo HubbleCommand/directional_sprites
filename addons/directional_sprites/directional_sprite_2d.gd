@@ -34,9 +34,14 @@ func _set(property: StringName, value: Variant) -> bool:
 @onready var shadermaterial = ShaderMaterial.new()
 
 
+func _texture_changed():
+	DirectionalHelpers.set_shader_param(material, "frame", texture)
+
 func _ready() -> void:
 	material = ShaderMaterial.new()
 	material.shader = shader
+	
+	texture_changed.connect(_texture_changed)
 	
 	DirectionalHelpers.set_shader_param(material, "frame", texture)
 	DirectionalHelpers.set_shader_param(material, "orientation", orientation)
