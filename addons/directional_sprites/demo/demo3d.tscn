@@ -1,7 +1,6 @@
-[gd_scene load_steps=17 format=3 uid="uid://kje4yf8mseks"]
+[gd_scene load_steps=15 format=3 uid="uid://kje4yf8mseks"]
 
 [ext_resource type="Script" path="res://addons/directional_sprites/demo/spin3d.gd" id="1_4cp1g"]
-[ext_resource type="Shader" path="res://addons/directional_sprites/demo/demo3d.gdshader" id="1_mkxvv"]
 [ext_resource type="Texture2D" uid="uid://5ipk7xs0lji1" path="res://addons/directional_sprites/demo/assets/sample.png" id="1_otmx8"]
 [ext_resource type="Shader" path="res://addons/directional_sprites/DirectionalSprite3DShader.gdshader" id="4_me8hs"]
 [ext_resource type="Script" path="res://addons/directional_sprites/directional_sprite_3d.gd" id="4_vtpsc"]
@@ -10,15 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://b2gujebt5rf63" path="res://addons/directional_sprites/demo/assets/doom_walking.png" id="7_r3sj5"]
 [ext_resource type="Texture2D" uid="uid://x5v3d8vlykri" path="res://addons/directional_sprites/demo/assets/numbers6dh.png" id="7_rjyr6"]
 [ext_resource type="SpriteFrames" uid="uid://dd7uwcb0xjk2a" path="res://addons/directional_sprites/demo/assets/doom.tres" id="8_5fsc3"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hx5jb"]
-resource_local_to_scene = true
-render_priority = 0
-shader = ExtResource("1_mkxvv")
-shader_parameter/n_rows = 8
-shader_parameter/n_columns = 4
-shader_parameter/play = false
-shader_parameter/sprite_sheet = ExtResource("7_r3sj5")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rvupy"]
 render_priority = 0
@@ -90,12 +80,6 @@ shader_parameter/views = SubResource("AtlasTexture_sojxl")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -2)
 shadow_enabled = true
 shadow_blur = 0.0
-
-[node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.09807, 0)
-material_override = SubResource("ShaderMaterial_hx5jb")
-billboard = 1
-texture = ExtResource("7_r3sj5")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 2.5)
