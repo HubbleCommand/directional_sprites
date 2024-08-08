@@ -4,47 +4,44 @@ uniform sampler2D frame : filter_nearest, source_color;
 uniform float directions = 8;
 uniform bool orientation = true;
 
-varying mat4 matrix;
-varying mat4 c_matrix;
+varying float rotation;
 
-//The issue with the following approach is that all transforms are ignored...
-// (animation and region still works)
 void vertex() {
-	matrix = MODEL_MATRIX;
-	c_matrix = CANVAS_MATRIX;
-	
 	//Resize to size of one frame direction
 	if (orientation) {	//Vertical
 		VERTEX.y *= 1.0 / directions;} 
 	else {				//Horizontal
 		VERTEX.x *= 1.0 / directions;}
+	
+	vec4 world_position = MODEL_MATRIX * vec4(VERTEX, 0.0, 1.0);
+	vec4 local_position = inverse(CANVAS_MATRIX) * world_position;
 
-	// Extract the normalized rotation part of the MODELVIEW_MATRIX
-	vec2 rotation_x = normalize(c_matrix[0].xy);
-	vec2 rotation_y = normalize(c_matrix[1].xy);
-	mat2 rotation_matrix = mat2(rotation_x, rotation_y);
-
-	// Calculate the inverse of the rotation matrix
-	mat2 inv_rotation_matrix = inverse(rotation_matrix);
-
-	// Apply the inverse rotation to the vertex to counteract node rotation
-	VERTEX = inv_rotation_matrix * VERTEX;
+	mat2 rotation_matrix = mat2(MODEL_MATRIX[0].xy, MODEL_MATRIX[1].xy);
+	float rads = atan(rotation_matrix[0].y, rotation_matrix[0].x);
+	
+	mat2 c_rotation_matrix = mat2(CANVAS_MATRIX[0].xy, CANVAS_MATRIX[1].xy);
+	float c_rads = atan(c_rotation_matrix[0].y, c_rotation_matrix[0].x);
+	
+	rads = - c_rads - rads;
+	rotation = rads;
+	
+	float x = VERTEX.x;
+	float y = VERTEX.y;
+	vec2 rotated = vec2(
+		cos(rads) * x - sin(rads) * y,
+		sin(rads) * x + cos(rads) * y	
+	);
+	VERTEX = rotated;
 }
+
 
 void fragment() {
 	float inv_directions = 1.0 / directions;
-	float direction_angle = (2.0 * PI) / directions;
-	
-	mat2 rotation_matrix = mat2(matrix[0].xy, matrix[1].xy);
-	float rads = atan(rotation_matrix[0].y, rotation_matrix[0].x);
-	
-	mat2 c_rotation_matrix = mat2(c_matrix[0].xy, c_matrix[1].xy);
-	float c_rads = atan(c_rotation_matrix[0].y, c_rotation_matrix[0].x);
-	
-	rads = c_rads - rads;
+	float direction_angle = TAU / directions;
 
+	float rads = rotation;
 	if (rads < 0.0) {
-		rads += 2.0 * PI;	//Convert to positive equivalent
+		rads += TAU;	//Convert to positive equivalent
 	}
 	//Fixes when rad is between last dir∠ to 360deg
 	//Still minor issues here, but works for now
@@ -56,7 +53,7 @@ void fragment() {
 
 	float frame_number = floor((rads / direction_angle));
 	float offset = frame_number / directions;	// frame_number * inv_directions
-	
+
 	//Get transformed UV
 	vec2 region_uv;
 	if (orientation) {
@@ -64,8 +61,7 @@ void fragment() {
 	} else {
 		region_uv = UV * vec2(inv_directions, 1.0) + vec2(offset, 0.0);
 	}
-	
-	//vec4 tex_color = texture(TEXTURE, region_uv);
+
 	vec4 tex_color = texture(frame, region_uv);
 	COLOR = tex_color;
 	NORMAL = texture(NORMAL_TEXTURE, UV).rgb;
