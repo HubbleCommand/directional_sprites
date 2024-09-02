@@ -21,7 +21,6 @@ class_name DirectionalSprite2D
 		if Engine.is_editor_hint():
 			notify_property_list_changed ( )
 
-@export var light_occluder: LightOccluder2D
 
 func _set(property: StringName, value: Variant) -> bool:
 	#Animation-related props require rebuilding frames
@@ -48,10 +47,3 @@ func _ready() -> void:
 	DirectionalHelpers.set_shader_param(material, "frame", texture)
 	DirectionalHelpers.set_shader_param(material, "orientation", orientation)
 	DirectionalHelpers.set_shader_param(material, "directions", directions)
-
-func _process(delta: float) -> void:
-	if light_occluder:
-		#light_occluder.global_rotation_degrees = 0.0
-		#light_occluder.rotation = 0.0
-		#light_occluder.global_rotation = 0.0
-		pass
