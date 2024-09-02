@@ -33,3 +33,15 @@ Configuration is simpler, with only the Directions and Orientation properties. T
 ### Directional Sprite 2D
 
 ### Animated Directional Sprite 2D
+
+### Lighting and Shadows
+While the [official documentation](https://docs.godotengine.org/en/stable/tutorials/2d/2d_lights_and_shadows.html) is a good start, it doesn't provide a complete solution.
+
+In the case of shadows and occluders with sprites, we usually don't want the shadows to self-cast on the sprite itself.
+To this end, follow the solution [detailed here](https://github.com/godotengine/godot/issues/74265#issuecomment-1755039506).
+Use two `PointLight2D`s, each on a different light layer (the `Item Cull Mask` on `Range` and/or `Shadow`).
+One layer should be for the occluders and shadow casting, while the other should just be to light up the sprites.
+Check the 2D demo to see it in action.
+Note that having the same `PointLight2D` on different `Range` `Item Cull Mask` layers won't work.
+
+Note that in the future (4.4+), Godot may [use z-index for shadow casting](https://github.com/godotengine/godot/pull/93881).

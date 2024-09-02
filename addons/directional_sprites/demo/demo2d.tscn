@@ -9,8 +9,20 @@
 [ext_resource type="Texture2D" uid="uid://bcjtnbgaciuve" path="res://addons/directional_sprites/demo/assets/doom_firing.png" id="6_42jhf"]
 [ext_resource type="Script" path="res://addons/directional_sprites/animated_directional_sprite_2d.gd" id="7_vhj28"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uqnhn"]
+shader = ExtResource("1_c2qri")
+shader_parameter/directions = 8.0
+shader_parameter/orientation = true
+shader_parameter/frame = ExtResource("1_8ac2s")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jxmrh"]
+shader = ExtResource("1_c2qri")
+shader_parameter/directions = 8.0
+shader_parameter/orientation = true
+shader_parameter/frame = ExtResource("5_5ifqk")
+
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_mkw4c"]
-polygon = PackedVector2Array(2, -23, 6, -15, 7, 27, -4, 27, -6, -14, -4, -23)
+polygon = PackedVector2Array(2, -23, 6, -15, 7, 27, 2, 24, -6, -14, -4, -23)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2n3aa"]
 atlas = ExtResource("6_42jhf")
@@ -34,39 +46,47 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0.2)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_uqnhn"]
-shader = ExtResource("1_c2qri")
-shader_parameter/directions = 8.0
-shader_parameter/orientation = true
-shader_parameter/frame = ExtResource("1_8ac2s")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jxmrh"]
-shader = ExtResource("1_c2qri")
-shader_parameter/directions = 8.0
-shader_parameter/orientation = true
-shader_parameter/frame = ExtResource("5_5ifqk")
-
 [node name="Demo" type="Node2D"]
 position = Vector2(1000, 500)
 
-[node name="ColorRect2" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -278.0
 offset_top = -275.0
 offset_right = 255.0
 offset_bottom = 138.0
 color = Color(0.351563, 0.351563, 0.351563, 0.470588)
 
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
-visible = false
-position = Vector2(-204, -86)
-rotation = 0.702757
-scale = Vector2(2, 2)
+[node name="Camera2D" type="Camera2D" parent="."]
+ignore_rotation = false
+zoom = Vector2(3, 3)
+script = ExtResource("6_0qnt1")
 
-[node name="LightOccluder2D3" type="LightOccluder2D" parent="."]
+[node name="DirectionalSprite2D Horizontal" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_uqnhn")
+position = Vector2(-100, 0)
+texture = ExtResource("1_8ac2s")
+region_rect = Rect2(10, 10, -10, 10)
+script = ExtResource("2_mbq3j")
+directions = 8
+
+[node name="DirectionalSprite2D Vertical" type="Sprite2D" parent="."]
+light_mask = 2
+material = SubResource("ShaderMaterial_jxmrh")
+rotation = -0.949568
+texture = ExtResource("5_5ifqk")
+region_rect = Rect2(0, 0, 60.007, 340.588)
+script = ExtResource("2_mbq3j")
+directions = 8
+orientation = 1
+
+[node name="Node2D" type="Node2D" parent="."]
 position = Vector2(100, 0)
+
+[node name="LightOccluder2D3" type="LightOccluder2D" parent="Node2D"]
 occluder = SubResource("OccluderPolygon2D_mkw4c")
 
-[node name="AnimatedDirectionalSprite2D" type="AnimatedSprite2D" parent="LightOccluder2D3"]
+[node name="AnimatedDirectionalSprite2D" type="AnimatedSprite2D" parent="Node2D"]
+light_mask = 2
 material = SubResource("ShaderMaterial_thipe")
 sprite_frames = ExtResource("6_1gsch")
 animation = &"firing"
@@ -76,31 +96,17 @@ script = ExtResource("7_vhj28")
 directions = 8
 orientation = 1
 
-[node name="Camera2D" type="Camera2D" parent="."]
-ignore_rotation = false
-zoom = Vector2(3, 3)
-script = ExtResource("6_0qnt1")
-
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(62, -34)
+position = Vector2(42, 41)
 scale = Vector2(2, 2)
 energy = 1.91
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_5gdsg")
 
-[node name="DirectionalSprite2D" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_uqnhn")
-position = Vector2(-100, 0)
-texture = ExtResource("1_8ac2s")
-region_rect = Rect2(10, 10, -10, 10)
-script = ExtResource("2_mbq3j")
-directions = 8
-
-[node name="DirectionalSprite2D Vertical" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_jxmrh")
-rotation = -0.949568
-texture = ExtResource("5_5ifqk")
-region_rect = Rect2(0, 0, 60.007, 340.588)
-script = ExtResource("2_mbq3j")
-directions = 8
-orientation = 1
+[node name="PointLight2D" type="PointLight2D" parent="PointLight2D"]
+scale = Vector2(2, 2)
+energy = 1.91
+range_item_cull_mask = 2
+shadow_enabled = true
+shadow_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_5gdsg")
