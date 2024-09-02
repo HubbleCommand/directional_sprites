@@ -1,4 +1,4 @@
-# directional_sprites
+# Directional Sprites
 n-directional sprites in 2D and 3D, for Godot 4.x
 
 ![3d demo](https://github.com/HubbleCommand/directional_sprites/blob/main/media/demo3d.gif)
