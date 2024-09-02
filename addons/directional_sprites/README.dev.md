@@ -8,11 +8,9 @@ However, the shader actually doesn't work correctly when rotating the camera up 
 After much fenagling, I randomly stumbled upon [this reddit post](https://www.reddit.com/r/godot/comments/13fgdek/shader_only_8_directional_billboarding/)
 which had a much better way to calculate rotations. While it still needed some work to finish, it was crucial in fixing the incorrent frame switching issue.
 
-Uses shaders to achieve directional billboard effect.
-
 Some sample sprites:
-	- https://www.spriters-resource.com/fullview/27877/
-	- https://www.doomworld.com/forum/topic/73426-share-your-sprites/?page=75
+- https://www.spriters-resource.com/fullview/27877/
+- https://www.doomworld.com/forum/topic/73426-share-your-sprites/?page=75
 
 
 For 2D: https://thebookofshaders.com/08/
